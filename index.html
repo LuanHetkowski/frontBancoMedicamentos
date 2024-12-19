@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Medicamento</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Cadastro de Medicamento</h1>
+        <form id="medicamentoForm">
+            <label for="nome">Nome do Medicamento:</label>            
+            <input type="text" id="nome" name="nome" placeholder="Digite o nome " required>            
+            <h6>Digite o nome do medicamento para pesquisar</h6>
+
+            <button type="submit" id="btnPesquisar">Pesquisar</button>
+        </form>
+    </div>
+    <div id="containerResult" class="containerResult">
+        <h2 id="carregandoStatus" class="carregandoStatus">Carregando...</h2>
+        <h2 id="ResultadoStatus" class="ResultadoStatus">Resultado banco</h2>
+        <h2 id="ResultadoErro" class="ResultadoErro">Erro ao consultar banco de dados</h2>
+        <ul id="listaMedicamentos">
+                            
+        </ul>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Medicamento</title>
+    <link rel="stylesheet" href="stylePg2.css">    
+    <script src="https://unpkg.com/quagga@0.12.1/dist/quagga.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+</head>
+<body>    
+    <div class="container">        
+        <h1>Detalhes do Medicamento</h1>        
+        <form id="detalhesMedicamentoForm">
+            <!-- Código de Barras -->
+            <div class="input-group">
+                <label for="codigoDeBarras">Código de Barras:</label>
+                <div class="input-with-button">
+                    <input type="number" id="codigoDeBarras" name="codigoDeBarras" placeholder="Digite ou escaneie o código de barras" required>
+                    <button type="button" id="escanearCodigo" >Escanear Código</button>
+                </div>
+                <div id="barcode-video" class="barcode-video"></div>
+            </div>
+             <!-- Linha -->
+             <div class="input-group">                
+                <input type="number" id="linha" name="linha" style="display: none;">
+            </div>
+            <!-- Nome do Medicamento -->
+            <div class="input-group">
+                <label for="nome">Nome do Medicamento:</label>
+                <input type="text" id="nome" name="nome" placeholder="Digite o nome do medicamento" required>
+            </div>
+
+            <!-- Concentração -->
+            <div class="input-group">
+                <label for="dose">Concentração:</label>
+                <div class="input-with-select">
+                <input type="number" id="concentracao" name="concentracao" placeholder="Digite a dose em mg" required>
+                <select name="unidadeConcentracao" id="unidadeConcentracao" required>
+                    <option value="mg">mg</option>
+                    <option value="g">g</option>
+                    <option value="ml">ml</option>
+                    <option value="mcg/μg">mcg/μg</option>    
+                    <option value="mg/mL">mg/mL</option>    
+                    <option value="µg/mL">µg/mL</option>    
+                    <option value="g/L">g/L</option>    
+                    <option value="mol/L">mol/L</option>    
+                    <option value="UI">UI</option>                    
+                    <option value="UI/mL">UI/mL</option>                    
+                    <option value="%">%</option>                    
+                    <option value="ppm">ppm</option>                    
+                    <option value="mEq/L">mEq/L</option>                    
+                </select>
+            </div>
+            </div>
+
+            <!-- Periodicidade -->
+            <div class="input-group">
+                <label for="periodicidade">Periodicidade:</label>
+                <input type="text" id="periodicidade" name="periodicidade" placeholder="Ex.: 08:00; 12:00" >
+            </div>
+
+            <!-- Quantidade na Caixa -->
+            <div class="input-group">
+                <label for="quantidadeCaixa">Quantidade na Caixa:</label>
+                <div class="input-with-select">
+                <input type="number" id="quantidadeCaixa" name="quantidadeCaixa" placeholder="Digite a quantidade na caixa" required>
+                <select name="unidadeQuantidade" id="unidadeQuantidade" required>
+                    <option value="Comprimidos">Comprimidos</option>                    
+                    <option value="ml">ml</option>
+                    <option value="L">L</option>
+                    <option value="g">g</option>                                                        
+                    <option value="mg">mg</option>                    
+                    <option value="dose">dose</option>                                                    
+                </select>
+            </div>
+            </div>
+
+            <!-- Forma Farmacológica -->
+            <div class="input-group">
+                <label for="formaFarmacologica">Forma Farmacológica:</label>
+                <select id="formaFarmacologica" name="formaFarmacologica" required>
+                    <option value="" disabled selected>Selecione a forma farmacológica</option>
+                    <!-- Forma Sólida -->
+                    <optgroup label="Forma Sólida">
+                        <option value="Cápsula">Cápsula</option>
+                        <option value="Comprimido">Comprimido</option>
+                        <option value="Pílula">Pílula</option>
+                        <option value="Drágea">Drágea</option>
+                        <option value="Granulado">Granulado</option>
+                        <option value="Pó">Pó</option>
+                        <option value="Pastilha">Pastilha</option>
+                    </optgroup>
+                    <!-- Forma Líquida -->
+                    <optgroup label="Forma Líquida">
+                        <option value="Ampola">Ampola</option>
+                        <option value="Frasco-ampola">Frasco-ampola</option>
+                        <option value="Elixir">Elixir</option>
+                        <option value="Emulsão">Emulsão</option>
+                        <option value="Suspensão">Suspensão</option>
+                    </optgroup>
+                    <!-- Forma Semissólida -->
+                    <optgroup label="Forma Semissólida">
+                        <option value="Creme">Creme</option>
+                        <option value="Xarope">Xarope</option>
+                        <option value="Gel">Gel</option>
+                        <option value="Loção">Loção</option>
+                        <option value="Pasta">Pasta</option>
+                        <option value="Pomada">Pomada</option>
+                        <option value="Unguento">Unguento</option>
+                    </optgroup>
+                </select>
+            </div>
+
+
+            <!-- Horários Recomendados -->
+            <div class="input-group">
+                <label for="horariosRecomendados">Horários Recomendados:</label>
+                <input type="text" id="horariosRecomendados" name="horariosRecomendados" placeholder="Ex.: 08:00; 14:00; 20:00;" >
+            </div>
+
+            <!-- Laboratório -->
+            <div class="input-group">
+                <label for="laboratorio">Laboratório:</label>
+                <input type="text" id="laboratorio" name="laboratorio" placeholder="Laboratório" >
+            </div>
+
+            <!-- Interações Medicamentosas -->
+            <div class="input-group">
+                <label for="interacoesMedicamentosas">Interações Medicamentosas:</label>
+                <textarea id="interacoesMedicamentosas" name="interacoesMedicamentosas" placeholder="Ex.: Paracetamol; Analgésicos;" rows="3" ></textarea>
+            </div>          
+
+            <!-- Classe Terapêutica -->
+            <div class="input-group">
+                <label for="classeTerapeutica">Classe Terapêutica:</label>
+                <input type="text" id="classeTerapeutica" name="classeTerapeutica" placeholder="Digite a classe terapêutica" >
+            </div>
+
+            <!-- Botão Salvar -->
+            <button type="submit" id="submitBtn">Salvar</button>
+        </form>
+    </div>
+    <script src="scriptPg2.js"></script>
+</body>
+</html>
